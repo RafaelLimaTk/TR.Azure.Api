@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  tr.azure.api:
+    image: ${DOCKER_REGISTRY-}trazureapi
+    build:
+      context: .
+      dockerfile: TR.Azure.Api/Dockerfile
+    depends_on:
+        - bd.azure.api
+    ports:
+      - "8081:8080"
+
+  bd.azure.api:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+    - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: trazureapi_default
+    external: true
+
+volumes:
+  postgres_data:
