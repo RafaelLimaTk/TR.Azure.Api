@@ -32,7 +32,7 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore path/TR.Azure.Api/TR.Azure.Api.sln
 
       - name: Build
         run: dotnet build --no-restore
