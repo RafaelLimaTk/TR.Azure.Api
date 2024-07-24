@@ -12,9 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      ASPNETCORE_ENVIRONMENT: Development
-
     steps:
       - uses: actions/checkout@v3
 
@@ -42,6 +39,20 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
+        with:
+          name: publish
+          path: ./publish
+
+  deploy:
+    needs: build
+    environment: desenvolvimento
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
         with:
           name: publish
           path: ./publish
