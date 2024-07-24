@@ -32,10 +32,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Install dependencies
-        run: dotnet restore TR.Azure.Api/TR.Azure.Api.sln
+        run: dotnet restore TR.Azure.Api.sln
 
       - name: Build
-        run: dotnet build TR.Azure.Api/TR.Azure.Api.sln --configuration Release --no-restore
+        run: dotnet build TR.Azure.Api.sln --configuration Release --no-restore
 
       - name: Publish
         run: dotnet publish TR.Azure.Api/TR.Azure.Api/TR.Azure.Api.csproj --configuration Release --no-restore --output ./publish
