@@ -38,7 +38,7 @@ jobs:
         run: dotnet build TR.Azure.Api.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish TR.Azure.Api/TR.Azure.Api/TR.Azure.Api.csproj --configuration Release --no-restore --output ./publish
+        run: dotnet publish TR.Azure.Api/TR.Azure.Api.csproj --configuration Release --no-restore --output ./publish
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
